@@ -25,3 +25,21 @@ describe("GET /listings", () => {
     expect(typeof response.body[0].price).toBe("number");
   });
 });
+
+describe("POST /listings", () => {
+  it("should return an bad request error for missing title", async () => {
+    const listingMock = {
+      price: 12,
+      description: "to write something",
+    };
+
+    const response = await request(app)
+      .post("/listings")
+      .send(listingMock)
+      .expect(400);
+
+    console.log(response);
+
+    expect(response.text).toEqual("title is required.");
+  });
+});
