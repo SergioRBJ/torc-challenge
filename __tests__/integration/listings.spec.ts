@@ -38,8 +38,6 @@ describe("POST /listings", () => {
       .send(listingMock)
       .expect(400);
 
-    console.log(response);
-
     expect(response.text).toEqual("title is required.");
   });
 });
