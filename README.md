@@ -10,4 +10,16 @@ API for Torcs's test
 
 ## API Routes
 
-GET ```/listings``` -> Return all listings. 
+GET `/listings` -> Return all listings.
+
+POST `/listings` -> Add listing.
+
+body interface:
+
+```json
+{
+  title: string;
+  price: number;
+  description?: string;
+}
+```
