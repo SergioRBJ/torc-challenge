@@ -48,4 +48,22 @@ app.post(
   }
 );
 
+app.delete(
+  "/listings/:id",
+  async (req: Request, res: Response<void | string>, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+      const controller = new ListingController();
+      await controller.delete(id);
+      res.status(204).send();
+    } catch (error) {
+      if (error instanceof CustomHTTPError) {
+        res.status(error.statusCode).send(error.message);
+      } else {
+        next(error);
+      }
+    }
+  }
+);
+
 export default app;

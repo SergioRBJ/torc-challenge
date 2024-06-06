@@ -23,3 +23,5 @@ body interface:
   description?: string;
 }
 ```
+
+DELETE `/listings:id` -> Delete specific listing based on id.
