@@ -8,6 +8,10 @@ API for Torcs's test
 
 `npm run dev`
 
+## Run Integration Tests
+
+`npm run test`
+
 ## API Routes
 
 GET `/listings` -> Return all listings.
