@@ -7,3 +7,7 @@ API for Torcs's test
 `npm i`
 
 `npm run dev`
+
+## API Routes
+
+GET ```/listings``` -> Return all listings. 
