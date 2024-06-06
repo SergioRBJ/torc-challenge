@@ -4,6 +4,8 @@ import {
   getListings,
   deletelisting,
 } from "../repository/listing.repository";
+import { addListingSchema } from "./validators/listing.validator";
+import { CustomHTTPError } from "../shared/http-error";
 
 export class ListingController {
   async getAll(): Promise<Listing[]> {
@@ -12,6 +14,12 @@ export class ListingController {
   }
 
   async add(listing: Omit<Listing, "id">): Promise<void> {
+    const validationResult = addListingSchema.safeParse(listing);
+
+    if (!validationResult.success) {
+      throw new CustomHTTPError(validationResult.error.issues[0].message, 400);
+    }
+
     const result = await addListing(listing);
     return result;
   }
